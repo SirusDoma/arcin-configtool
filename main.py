@@ -39,7 +39,7 @@ class String:
 		return str(self.widget.text()).encode()
 	
 	def set(self, value):
-		self.widget.setText(value.decode())
+		self.widget.setText(value.decode().strip('\0'))
 
 class Flags:
 	def __init__(self, form, label, *flags):
@@ -185,7 +185,7 @@ if __name__ == '__main__':
             (2, 'Invert QE2'),
             (3, 'LED1 always on'),
             (4, 'LED2 always on'),
-			(5, 'Analog Mode'),
+            (5, 'Analog Mode'),
         ),
         Enum(mainwindow, 'QE1 sensitivity',
             (0, '1:1'),
