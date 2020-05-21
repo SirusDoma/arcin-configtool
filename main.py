@@ -4,7 +4,7 @@ import sys, struct
 from functools import partial
 from PyQt5 import QtCore, QtWidgets
 
-import modules.pyhidapi as pyhidapi
+import pyhidapi
 
 class MainWindow(QtWidgets.QWidget):
 	def __init__(self, parent = None):
@@ -36,10 +36,10 @@ class String:
 		form.layout.addRow(label, self.widget)
 	
 	def get(self):
-		return str(self.widget.text())
+		return str(self.widget.text()).encode()
 	
 	def set(self, value):
-		self.widget.setText(value)
+		self.widget.setText(value.decode())
 
 class Flags:
 	def __init__(self, form, label, *flags):
@@ -113,7 +113,8 @@ class HIDDeviceDialog(QtWidgets.QDialog):
 		self.refresh()
 	
 	def refresh(self):
-		self.devices = pyhidapi.enumerate(0x1d50, 0x6080)
+		self.devices  = pyhidapi.enumerate(0x1d50, 0x6080)
+		self.defices += pyhidapi.enumerate(0x1ccf, 0x1014)
 		names = ['%s (%s)' % (dev.product_string, dev.serial_number) for dev in self.devices]
 		
 		self.listwidget.clear()
@@ -135,8 +136,9 @@ class HIDDeviceDialog(QtWidgets.QDialog):
 		return dialog.dev
 
 def select_device():
-	devices = pyhidapi.enumerate(0x1d50, 0x6080)
-	
+	devices  = pyhidapi.enumerate(0x1d50, 0x6080)
+	devices += pyhidapi.enumerate(0x1ccf, 0x1014)
+
 	if len(devices) == 1:
 		return devices[0]
 	
@@ -156,7 +158,7 @@ def write():
 	dev.set_feature_report(struct.pack('<BBx60s', 0, len(data), data), 0xc0)
 	
 	# Reset device.
-	dev.set_feature_report('\x20', 0xb0)
+	dev.set_feature_report('\x20'.encode(), 0xb0)
 	
 	QtWidgets.QMessageBox.information(mainwindow, 'Information', 'Write complete')
 
@@ -183,6 +185,7 @@ if __name__ == '__main__':
             (2, 'Invert QE2'),
             (3, 'LED1 always on'),
             (4, 'LED2 always on'),
+			(5, 'Analog Mode'),
         ),
         Enum(mainwindow, 'QE1 sensitivity',
             (0, '1:1'),

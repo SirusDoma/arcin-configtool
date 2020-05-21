@@ -12,7 +12,6 @@ Setup
 -----
 1. Clone the branch you want to work with.
 2. `pip3 install PyQt5` make sure to install everything that required by PyQt5 beforehand.
-3. `git submodule update` to retrieve `pyhidapi` submodule, note that this custom made repo that already customized for arcin, not ordinary `pyhidapi`.
 
 Building and Testing
 --------------------
