@@ -1,3 +1,0 @@
-[submodule "pyhidapi"]
-	path = modules
-	url = git://git.jvnv.net/pyhidapi.git
