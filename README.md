@@ -2,6 +2,7 @@ arcin configtool
 =====
 This repository contains config tool to configure arcin v1.1, a custom game controller board with support for 11 buttons, 2 analog or quadrature encoders, 2 always-on LEDs, and WS2812B LED lighting via the B9 connector.
 
+Check out [sdvx-nemsys-eacloud-conf](https://github.com/SirusDoma/arcin-configtool/tree/sdvx-nemsys-eacloud-conf) for [nemsys frimware](https://github.com/SirusDoma/arcin) config tool.  
 The original code by zyp can be found at: https://paste.jvnv.net/view/HtEgg
 
 Pre-Built Images
