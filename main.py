@@ -114,7 +114,8 @@ class HIDDeviceDialog(QtWidgets.QDialog):
 	
 	def refresh(self):
 		self.devices  = pyhidapi.enumerate(0x1d50, 0x6080)
-		self.defices += pyhidapi.enumerate(0x1ccf, 0x101c)
+		self.devices += pyhidapi.enumerate(0x1ccf, 0x101c)
+		self.devices += pyhidapi.enumerate(0x1ccf, 0x1014)
 		names = ['%s (%s)' % (dev.product_string, dev.serial_number) for dev in self.devices]
 		
 		self.listwidget.clear()
@@ -138,6 +139,7 @@ class HIDDeviceDialog(QtWidgets.QDialog):
 def select_device():
 	devices  = pyhidapi.enumerate(0x1d50, 0x6080)
 	devices += pyhidapi.enumerate(0x1ccf, 0x101c)
+	devices += pyhidapi.enumerate(0x1ccf, 0x1014)
 
 	if len(devices) == 1:
 		return devices[0]
