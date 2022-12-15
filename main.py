@@ -203,9 +203,9 @@ if __name__ == '__main__':
             (2, 'IIDX (QE1)'),
             (3, 'IIDX (QE2)'),
         ),
-        Enum(mainwindow, 'WS2812B mode',
+        Enum(mainwindow, 'QE Correction',
             (0, 'Disabled'),
-            (1, 'B9'),
+            (1, 'SDVX e-AMUSEMENT CLOUD'),
         ),
     )
 
