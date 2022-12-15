@@ -203,7 +203,7 @@ if __name__ == '__main__':
             (2, 'IIDX (QE1)'),
             (3, 'IIDX (QE2)'),
         ),
-        Enum(mainwindow, 'QE Correction',
+        Enum(mainwindow, 'QE correction',
             (0, 'Disabled'),
             (1, 'SDVX e-AMUSEMENT CLOUD'),
         ),
